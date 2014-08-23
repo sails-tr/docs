@@ -1,5 +1,5 @@
 # myApp/.gitignore
-### Purpose
+### Amaç
 
 Bu dosya yalnızca git kullanıyorsanız sizi ilgilendirir.
 
