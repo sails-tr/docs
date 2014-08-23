@@ -1,4 +1,4 @@
 sails-docs-anatomy
 ==================
 
-Anatomy documentation for www.sailsjs.org
+Anatomi belgelendirmelerine bu adresten ulaşabilirsiniz: www.sailsjs.org
