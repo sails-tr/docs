@@ -1,9 +1,9 @@
 # myApp/package.json
-### Purpose
-This is a standard configuration file for [npm](https://npmjs.org/doc/json.html). Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.
+### Amaç
+Bu dosya [npm](https://npmjs.org/doc/json.html) için standart konfigürasyon dosyasıdır. Bu dosya diğer şeylerle birlikte uygulamanızın çalışması için gereken Node modüllerinin isimlerini ve versiyonlarını içerir. Bu dosyayı elle düzenleyebilirsiniz fakat dosya yapısını ve yazımını bozmamaya dikkat edin.
 
-### More Info
-> Check out [this awesome interactive guide by Nodejitsu](http://package.json.nodejitsu.com) explaining package.json 
+### Daha Fazla Bilgi
+> package.json'ı açıklayan [Nodejitsu'nun bu mükemmel interaktif rehberine](http://package.json.nodejitsu.com) bir göz atın.
 
 
 <docmeta name="uniqueID" value="packagejson891874">
