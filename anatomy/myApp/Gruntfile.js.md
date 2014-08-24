@@ -1,13 +1,13 @@
 # myApp/Gruntfile.js
-### Purpose
+### Amaç
 
-Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails uses for this purpose.
+Sails ek dosyaların yönetimi için [Grunt'u](http://gruntjs.com) kullanır. Bu dosya Sails'in bu amaçla kullandığı GRUNT görevlerinin konfigürasyon bilgilerini içerir.
 
-Sails' integration with Grunt is fully customizable but for most use cases, this file should remain unchanged.  Instead, put your custom logic in `myApp/tasks/`.
+Sails'in Grunt ile integrasyonu tamamen özelleştirebilir olsa da çoğu kullanım durumunda bu dosyanın içeriği değiştirilmemelidir. Aksi hallerde özel kullanımlarınızı `myApp/tasks/` içinde tanımlayabilirsiniz.
 
 
-### More Info
-> More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
+### Daha fazla bilgi
+> Ek dosyaların yönetilmesi üzerine Grunt hakkında daha fazla bilgi almak için: http://gruntjs.com/configuring-tasks
 
 <docmeta name="uniqueID" value="Gruntfilejs375150">
 <docmeta name="displayName" value="Gruntfile.js">
