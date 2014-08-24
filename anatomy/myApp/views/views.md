@@ -1,9 +1,8 @@
 # myApp/views
-### Purpose
-This is the directory that holds all of your custom views.  
+### Amaç
+Burası tüm kendi view dosyalarınızı tutabileceğiniz klasördür.
 
-To create a custom view, create a new directory inside of this then create a new .ejs file.  In order for it to be rendered by a client, you must either set up a route in `myApp/config/routes.js` or use the `res.view()` method inside of a custom controller action.
-
+Kendi view dosyanızı oluşturmak için burada yeni bir klasör oluşturun ve .ejs uzantılı bir dosya oluşturun. Client tarafında render edilmesi için ya `myApp/config/routes.js`'de bir route ayarlayın ya da bir controller için `res.view()` metodunu kullanın.
 
 <docmeta name="uniqueID" value="viewsmd633977">
 <docmeta name="displayName" value="views">
