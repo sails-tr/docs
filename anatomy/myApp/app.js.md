@@ -1,6 +1,6 @@
 # myApp/app.js
-### Purpose
-This file exists only to tell Node how to start your app.  It is used once and only when you lift your app from the command line.  You should just ignore this file.
+### Amaç
+Bu dosya sadece Node'a uygulamayı nasıl başlatması gerektiğini söylemesi için var. Bu dosya yalnızca bir kez uygulamayı komut satırından başlattığınız zaman (`sails lift`) çalışır. Bu dosyada herhangi bir değişiklik yapmanıza gerek yok.
 
 <docmeta name="uniqueID" value="appjs249761">
 <docmeta name="displayName" value="app.js">
