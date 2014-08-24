@@ -1,27 +1,27 @@
-# Getting Started
+# Baþlarken
 
-## Installation
-To install the latest stable release with the command-line tool:
+## Kurulum
+En son kararlý sürümü yüklemek için cmd (command-line) kodu :
 
 	sudo npm -g install sails
 
-On Windows, you don't need sudo:
+Windows kullanýyorsanýz (sudo kodu yok)
 
 	npm -g install sails
 
-## Creating a New Sails Project
-Create a new app:
+## Yeni bir Sails Projesi oluþturmak
+Yeni bir app (uygulama) oluþtur:
 
 	sails new testProject
 
-Now lift the server:
+Þimdi klasörün içine girip, lift diyerek projeyi çalýþtýr:
 
 	cd testProject
 	sails lift
 
-At this point, if you visit (http://localhost:1337/) you will see the default home page.
+Bu noktada, eðer adresi (http://localhost:1337/) ziyaret edersen, varsayýlan home sayfasýný görürsün.
 
-Now, let's get Sails to do cool stuff.
+Hadi þimdi harika þeyler yapmak için Sails'i (yelkenleri) alalým.
 
 <docmeta name="uniqueID" value="GettingStarted99009">
 <docmeta name="displayName" value="Getting Started">
