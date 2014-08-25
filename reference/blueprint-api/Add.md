@@ -1,68 +1,68 @@
-# Add to Collection
+# Koleksiyona Ekleme
 
-Adds an association between two records.
+İki kayıt arasına bir ilişki ekleme.
 
 ```
 PUT /:model/:record/:association/:record_to_add
 ```
 
-This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
+Bu aksiyon, koleksiyonun özelliği ("primary" (birincil) kayıt) üzerinden diğer kayda ("foreign" (yabancı) kayıt) referans ekler.
 
-+ If the foreign record does not exist, it is created first.
-+ If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ Yabancı (foreign) kayıt bulunmuyorsa, ilk olarak oluşturulur.
++ Eğer birincil (primary) kayıttaki kolleksiyon, yabancı (foreign) kayda referansı varsa bu eylem reddedilir.
++ Eğer ilişki 2-way (çift yollu) ise, (örn: dönüşümlü, her iki tarafta "via" ile) yabancı kayıttaki ilişki güncellenmiş olur.
 
 
-### Example
+### Örnek
 
-Add purchase 47 to the list of purchases that Dolly (employee #7) has been involved in.
+Satışlar listesine Ahmed (id #7) isimli işçinin 47 nolu satşını ekle.
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/) Kullanarak:**
 
 ```javascript
-$.post('/employee/7/involvedInPurchases/47', function (purchases) {
+$.post('/isci/7/yapilanSatislar/47', function (purchases) {
   console.log(purchases);
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/) Kullanarak:**
 
 ```javascript
-$http.post('/employee/7/involvedInPurchases/47')
+$http.post('/isci/7/yapilanSatislar/47')
 .then(function (purchases) {
   console.log(purchases);
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js) Kullanarak:**
 
 ```javascript
-io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
+io.socket.post('/isci/7/yapilanSatislar/47', function (purchases) {
   console.log(purchases);
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL) Kullanarak:**
 
 ```bash
-curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
+curl http://localhost:1337/isci/7/yapilanSatislar/47 -X "POST"
 ```
 
 
-Should return "Dolly", the primary record:
+"Ahmed" birincil (primary) kayıt olarak dönmeli:
 
 ```json
 {
-  "involvedInPurchases": [
+  "yapilanSatislar": [
     {
-      "amount": 10000,
+      "miktar": 10000,
       "createdAt": "2014-08-03T01:50:33.898Z",
       "updatedAt": "2014-08-03T01:51:08.227Z",
       "id": 47,
-      "cashier": 7
+      "kasiyer": 7
     }
   ],
-  "name": "Dolly",
+  "isim": "Ahmed",
   "createdAt": "2014-08-03T01:16:35.440Z",
   "updatedAt": "2014-08-03T01:51:41.567Z",
   "id": 7
@@ -70,19 +70,19 @@ Should return "Dolly", the primary record:
 ```
 
 
-### Notes
+### Notlar
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + Bu eylem _çoğul_ ("koleksiyon") ilişki ile ilgilidir.  _tekil_ ("model") ilişkisi kurmak istiyorsan, [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html)'i kullanabilirsin.
+> + Yukarıdaki örnek "rest" blueprints'in açık olduğunu ve senin projende en az bir 'Isci' modelinin ilişkilenmiş olduğunu varsayar: `yapilanSatislar: {collection: 'Satis', via: 'kasiyer'}` aynı zamanda `Satis` modeli `kasiyer: {model: 'Isci'}` ile ilişkilidir.  Ve senin en az boş bir tane `SatisController` ve `IsciController` 'a ihtiyacın olacak.  Bu şekilde hızlı bir şekilde oluşturabilirsin:
 >
 >   ```shell
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
->   $ sails generate api employee
+>   $ sails generate api satis
+>   $ sails generate api isci
 >   ```
 >
-> ...then editing `api/models/Purchase.js` and `api/models/Employee.js`.
+> ...sonra `api/models/Satis.js` ve `api/models/Isci.js`'i düzelterek.
 
 <docmeta name="uniqueID" value="Add262514">
 <docmeta name="displayName" value="add to">

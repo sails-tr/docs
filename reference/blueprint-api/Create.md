@@ -1,39 +1,40 @@
-# Create a Record
+# Kayıt Oluşturma
 
-Creates a new model instance in your database then returns it's values.
+Senin veritabanında yeni bir model örneği oluşturup oluşturulan değerleri geri döndürür.
 
 ```
 POST /:model
 ```
 
 
-Attributes can be sent in the HTTP body as form-encoded values or JSON.
 
-Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
+Nitelikler HTTP body içinde form-encoded olarak veya JSON formatında gönderilebilir.
 
-Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest) for more info).
+Yeni oluşturulan örneği temsil eden JSON objesi ile yanıt verir.  Doğrulama hatası meydana gelirse, geçersiz nitelikler ile bir JSON tepkisi ve bir `400` durum kodu fırlatacaktır.
 
-If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for .subscribe() for more info.
+Ayrıca, bir `create` isteği dinleyen tüm socket'lere yayınlanmış olacaktır (Daha fazlası için bknz: [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest)).
 
-### Parameters
+Socket isteği ile bir aksiyon tetiklenirse, istek soketi de oluşturulmuş yeni model örneğine katılmış olacaktır. Kayıt daha sonra güncellenir veya silinirse, değişiklikler socket'in istemci bilgilendirmesine bir mesaj göndermiş olacaktır . Daha fazla bilgi için bknz: .subscribe().
 
- Parameter      | Type                                                      | Details
+### Parametreler
+
+ Parametre      | Tip                                                       | Detaylar
  -------------- | --------------------------------------------------------- |:---------------------------------
- *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | For `POST` (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For `GET` (shortcut) requests, add the parameters to the query string. <br/> <br/> Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
- callback       | ((string))                                                | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | `POST` (RESTful) isteğinde: yeni kayıtta bu değerleri ayarlamak için, body parametrelerini senin modelinde tanımlanmış nitelikler ile aynı isimde gönder.`GET` (shortcut) istekleri için, parametreleri query string ile ekle. <br/> <br/> İçiçe objeler ve gönderilmiş olan array'ler, onların <a>.create()</a> metoduna geçirildiği gibi gönderilir.
+ callback       | ((string))                                                | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir. Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> örn: `?callback=myJSONPHandlerFn`
 
-### Examples
+### Örnekler
 
-#### Create a record (REST)
+#### Bir kayıt (REST) oluştur
 
-Create a new pony named "AppleJack" with a hobby of "pickin".
+Hobisi "pickin" olan "AppleJack" adında bir midilli oluştur.
 
 #### Route
 `POST /pony`
 
 
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "name": "AppleJack",
@@ -41,7 +42,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-#### Example Response
+#### Örnek Cevap
 ```json
 {
   "name": "AppleJack",
@@ -52,12 +53,12 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-#### Create a record (shortcuts)
+#### Bir kayıt oluştur (shortcuts)
 
 #### Route
 `GET /pony/create?name=Shutterfly&best_pony=yep`
 
-#### Expected Response
+#### Beklenen Cevap
 
 ```javascript
 {
@@ -71,20 +72,20 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 ```
 
 
-### Examples with One Way Associations
+### Tek Yollu İlişki Örnekleri
 
-You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how.
+Modeller arasında iki yol ile ilişkiler oluşturabilirsin.  Ya ilişkiyi varolan bir kayıt ile VEYA iki kaydıda aynı anda oluşturarak yapabilirsin.  Nasıl olduğunu görmen için örnekleri kontrol et.
 
-These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
+Bu örnekler `Pet` ve `Pony` adında iki API varlığının olduğunu varsayar, ister el ile isterseniz [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html) ile oluşturabilirsiniz. `Pony` modeli  `Pet` modelini işaret eden `pet` niteliği ile yapılandırılmış olması gereklidir. Bunun nasıl yapıldığını bilmek için bknz: [Model İlişki Dokümanları](./ModelAssociations.md).
 
-### Create record while associating w/ existing record (REST)
+### Varolan Kayıt ile İlişkilendirerek w/ Yeni Kayıt Oluştur (REST)
 
-Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.
+"Pinkie Pie" adında  bir midilli oluştur ve onu "Gummy" adında `id`'si 10 olan bir evcil hayvan ile ilişkilendir.
 
 #### Route
 `POST /pony`
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "name": "Pinkie Pie",
@@ -93,7 +94,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 }
 ```
 
-#### Example Response
+#### Beklenen Cevap
 ```json
 {
   "name": "Pinkie Pie",
@@ -110,15 +111,15 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 ```
 
 
-### Create new record while associating w/ another new record (REST)
+### Yeni Kayıt ile İlişkilendirerek w/ Yeni Kayıt Oluştur (REST)
 
-Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
+İsmi "Pinkie Pie" hobby'si "ice skating" ve "Gummy" adında evcil hayvan (pet) ile ilişkilendirilmiş yeni bir kayıt oluştur.
 
 #### Route
 `POST /pony`
 
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "name": "Pinkie Pie",
@@ -130,7 +131,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 }
 ```
 
-#### Expected Response
+#### Beklenen Cevap
 ```json
 {
   "name": "Pinkie Pie",
