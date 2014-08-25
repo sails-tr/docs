@@ -1,32 +1,32 @@
-# Sails.js Documentation > API Reference
+# Sails.js dokümantasyon > API Referansı
 
 
-### Table of Contents
+### İçindekiler
 
 1. **Blueprint API**
-  1. Create a Record
-  2. Destroy a Record
-  3. Find Records
-  4. Find One Record
-  5. Update a Record
-2. **Plugins**
-  1. Adapters
-    1. Available Adapters
-    2. Custom Adapters
-  2. Generators
-    1. Custom Genarators
-    2. Available Generators
-  3. Hooks
-    1. Custom Hooks
-    2. Available Hooks
-3. **Command Line Interface**
+  1. Kayıt Oluşturma (create)
+  2. Kayıt Silme (destroy)
+  3. Kayıtları Bulma (find)
+  4. Tek bir Kayıt Bulma (find one)
+  5. Kaydı Güncelleme (update)
+2. **Eklentiler**
+  1. Adaptörler
+    1. Mevcut Adaptörler
+    2. Özel Adaptörler
+  2. Oluşturucular (generators)
+    1. Özel Oluşturucular
+    2. Mevcut Oluşturucular
+  3. Kancalar (hooks)
+    1. Özel Kancalar
+    2. Mevcut Kancalar
+3. **Komut Satırı (Command Line) Arabirimi**
   1. sails console
   2. sails debug
   3. sails generate
   4. sails lift
   5. sails new
   6. sails version
-4. **Request** (`req`)
+4. **İstekler (Request)** (`req`)
   1. req.is()
   2. req.accepted()
   3. req.acceptedLanguages()
@@ -57,7 +57,7 @@
   28. req.url
   29. req.wantsJSON
   30. req.xhr
-5. **Response** (`res`)
+5. **Cevaplar (Response)** (`res`)
   1. res.negotiate()
   2. res.attachment()
   3. res.clearCookie()
@@ -77,7 +77,7 @@
   17. res.status()
   18. res.type()
   19. res.view()
-6. **Configuration**
+6. **Yapılandırma (Configuration)**
   1. sails.config.i18n
   2. sails.config.blueprints
   3. sails.config.connections
