@@ -21,7 +21,7 @@ Socket isteği ile bir aksiyon tetiklenirse, istek soketi de oluşturulmuş yeni
  Parametre      | Tip                                                       | Detaylar
  -------------- | --------------------------------------------------------- |:---------------------------------
  *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | `POST` (RESTful) isteğinde: yeni kayıtta bu değerleri ayarlamak için, body parametrelerini senin modelinde tanımlanmış nitelikler ile aynı isimde gönder.`GET` (shortcut) istekleri için, parametreleri query string ile ekle. <br/> <br/> İçiçe objeler ve gönderilmiş olan array'ler, onların <a>.create()</a> metoduna geçirildiği gibi gönderilir.
- callback       | ((string))                                                | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir. Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ callback       | ((string))                                                | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir. Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> örn: `?callback=myJSONPHandlerFn`
 
 ### Örnekler
 
