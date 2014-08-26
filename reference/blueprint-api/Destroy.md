@@ -1,42 +1,42 @@
-# Destroy a Record
+# Kayıt Silme (Destroy)
 
-Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
+Daima veri tabanından varolan bir kaydı belirtilen `id`'ye göre siler ve silinmiş kaydı döndürür/getirir.
 
 ```
 DELETE /:model/:record
 ```
 
-Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
+**id** parametresi ile eşleşen model örneğini siler.  Silinen örneği temsil eden bir JSON objesi ile cevap verir.  Belirtilen **id** ile eşleşen bir kayıt yoksa, bir `404` geriye döndürür.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
+Ayrıca, bir `destroy` olayı tüm socket'lerin abonesi örnek odaya yayınlanmış olacaktır.
 
-Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
+Sonuç olarak, şu anda örneğe abone olmuş tüm socket'Ler ondan habersiz kalacaktır.
 
 
-### Parameters
+### Parametreler
 
- Parameter                          | Type                                    | Details
+ Parametre                          | Tip                                     | Ayrıntılar
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
- callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(gereklidir)*              | ((number))<br/>*-or-*<br/>((string))    | Kaydı silmek için birincil anahtar (primary key) değeri. `POST` (RESTful) istekleri için, JSON body ile verilmiştir veya rota yolunun (route path) bir parçasıyla. `GET` (shortcut) istekleri için, rota yolunun (route path) verilmiş olması gerekir.
+ callback                           | ((string))                              | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir.  Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> örn: `?callback=myJSONPHandlerFn`
 
-### Examples
+### Örnekler
 
-#### Destroy (REST)
+#### Silme - Destroy (REST)
 
-Delete Pinkie Pie.
+*Pinkie Pie* 'ı sil .
 
 #### Route
 `DELETE /pony`
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "id": 4
 }
 ```
 
-#### Expected Response
+#### Beklenen Cevap
 
 ```json
 {
@@ -48,14 +48,14 @@ Delete Pinkie Pie.
 }
 ```
 
-#### Destroy (Shortcuts)
+#### Silme - Destroy (Shortcuts)
 
 #### Route
 `GET /pony/destroy/4`
 
-#### Expected Response
+#### Beklenen Cevap
 
-Same as above.
+Yukarıdaki örnek ile aynı.
 
 
 <docmeta name="uniqueID" value="DestroyARecord867513">
