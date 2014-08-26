@@ -1,11 +1,13 @@
-# Sails.js Türkçe Dokümantasyon
+# Sails.js TÃ¼rkÃ§e DokÃ¼mantasyon
 
 Nedir?
 -------------
-Sails.js Node.js için hazırlanmış MVC yapısında bir framework'tür. Sails.js Ruby on Rails'e benzeyen kod yapısıyla dikkat çekmekte ve 
-Express.js, Socket.io gibi güçlü projelerin üzerine inşa edilmiştir.
- Özellikle chat uygulaması, Real-Time dashbords ve multiplayer oyunları gibi uygulamaları yapmanızda büyük kolaylıklar sağlar. 
- Ayrıca Grunt.js'nin temel özellikleri de içinde hazır şekilde gelmektedir. 
+Sails.js Node.js iÃ§in hazÄ±rlanmÄ±ÅŸ MVC yapÄ±sÄ±nda bir framework'tÃ¼r. Sails.js Ruby on Rails'e benzeyen kod yapÄ±sÄ±yla dikkat Ã§ekmekte ve 
+Express.js, Socket.io gibi gÃ¼Ã§lÃ¼ projelerin Ã¼zerine inÅŸa edilmiÅŸtir.
+ Ã–zellikle chat uygulamasÄ±, Real-Time dashbords ve multiplayer oyunlarÄ± gibi uygulamalarÄ± yapmanÄ±zda bÃ¼yÃ¼k kolaylÄ±klar saÄŸlar. 
+ AyrÄ±ca Grunt.js'nin temel Ã¶zellikleri de iÃ§inde hazÄ±r ÅŸekilde gelmektedir. 
 
-## Katkıda bulunmak için
-> Bu repo'yu fork edip, değişiklikleri yaptıktan sonra pull-request edebilirsiniz.
+### KatkÄ±da bulunmak iÃ§in
+- Bu repo'yu [Fork](https://help.github.com/articles/fork-a-repo) et
+- DÃ¼zenlemelerini yap
+- [Pull Request](https://help.github.com/articles/using-pull-requests) isteÄŸi gÃ¶nder
