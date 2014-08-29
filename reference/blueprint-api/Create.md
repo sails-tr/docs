@@ -14,7 +14,7 @@ Yeni oluşturulan örneği temsil eden JSON objesi ile yanıt verir.  Doğrulama
 
 Ayrıca, bir `create` isteği dinleyen tüm socket'lere yayınlanmış olacaktır (Daha fazlası için bknz: [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest)).
 
-Socket isteği ile bir aksiyon tetiklenirse, istek soketi de oluşturulmuş yeni model örneğine katılmış olacaktır. Kayıt daha sonra güncellenir veya silinirse, değişiklikler socket'in istemci bilgilendirmesine bir mesaj göndermiş olacaktır . Daha fazla bilgi için bknz: .subscribe().
+Aksiyon bir socket isteği ile tetiklenirse, istek soketi de oluşturulmuş yeni model örneğine katılmış olacaktır. Kayıt daha sonra güncellenir veya silinirse, değişiklikler socket'in istemci bilgilendirmesine bir mesaj göndermiş olacaktır . Daha fazla bilgi için bknz: .subscribe().
 
 ### Parametreler
 
