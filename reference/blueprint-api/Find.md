@@ -1,45 +1,47 @@
-# Find Records
+# Kayıtları Bul (Find)
 
-Returns a list of records from the model as a JSON array of objects.
+JSON obje dizisi ile, modelden kayıtların bir listesini döndürür/getirir.
 
 ```
 GET /:model
 ```
 
-Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.
-
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned.  If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for details.
+Sonuçlar filtrelenmiş, sayfalanmış, blueprint yapılandırılma merkezli sıralanmış ve/veya istekte parametreler gönderilmiş olabilir.
 
 
-### Parameters
+Aksiyon br socket isteği ile tetiklendiği zaman, istek yapan socket geri dönen kayda "subscribed" (katılmış) olacaktır. Kayıt daha sonra güncellenir veya silinirse, değişiklikler socket'in istemci bilgilendirmesine bir mesaj göndermiş olacaktır. Daha fazla bilgi için, bknz: [Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) .
 
-_All parameters are optional._
 
- Parameter      | Type         | Details
+
+### Parametreler
+
+_Bütün parametreler opsiyoneldir._
+
+ Parametre      | Tip          | Ayrıntılar
  -------------- | ------------ |:---------------------------------
- *              | ((string))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
- where          | ((string))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with a Waterline WHERE criteria object, _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
- limit          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
- skip           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
- sort           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
- callback       | ((number))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
+ *              | ((string))   | Sonuçları belirli bir niteliğe göre filtrelemek için, modelinde tanımlanmış nitelik ile aynı isimde bir sorgu parametresi belirt  <br/> <br/> Örneğin, bizim `Satis` modelimiz bir **miktar** niteliğine sahip,  $99.99 'lık satislarin listesini döndürmek için `GET /satis?miktar=99.99` gönderebiliriz.
+ where          | ((string))   | Belirli bir niteliğe göre filtrelemek yerine, `where` parametresini Waterline WHERE kriter objesi _(JSON tipinde)_ ile sağlayabilirsiniz.  Bu `contains`(içerir), `startsWith` (ileBaslar) ve diğer alt nitelik kriterleri ile `find()` sorgusundan daha güçlü avantajlar sağlar. <br/> <br/> örn: `?where={"name":{"contains":"theodore"}}`
+ limit          | ((number))   | Geriye döndürülecek olan maksimum kayıt sayısı (sayfalama için yararlı). Varsayılan: 30. <br/> <br/> örn: `?limit=100`
+ skip           | ((number))   | Es geçilecek kayıt sayısı (sayfalama için yararlı). <br/> <br/> örn: `?skip=30`
+ sort           | ((string))   | Sıralama düzeni. Varsayılan olarak birincil anahtar (primary key) değeri ile artan sıralama yapar. <br/> <br/> örn: `?sort=lastName%20ASC`
+ callback       | ((number))   | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir.  Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> örn: ?callback=my_JSONP_data_receiver_fn
 
 
 
-### `find` Example
+### `find` Örneği
 
-Find the 30 newest purchases in our database.
+Veritabanındaki en yeni olan 30 satışı bul.
 
 ```json
 [
  {
-   "amount": 49.99,
+   "miktar": 49.99,
    "id": 1,
    "createdAt": "2013-10-18T01:22:56.000Z",
    "updatedAt": "2013-10-18T01:22:56.000Z"
  },
  {
-   "amount": 99.99,
+   "miktar": 99.99,
    "id": 47,
    "createdAt": "2013-10-14T01:22:00.000Z",
    "updatedAt": "2013-10-15T01:20:54.000Z"
@@ -47,25 +49,25 @@ Find the 30 newest purchases in our database.
 ]
 ```
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/) Kullanarak:**
 
 ```javascript
-$.get('/purchase?sort=createdAt DESC', function (purchases) {
-  console.log(purchases);
+$.get('/satis?sort=createdAt DESC', function (satislar) {
+  console.log(satislar);
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/) Kullanarak:**
 
 ```javascript
-$http.get('/purchase?sort=createdAt DESC')
+$http.get('/satis?sort=createdAt DESC')
 .then(function (res) {
-  var purchases = res.data;
-  console.log(purchases);
+  var satislar = res.data;
+  console.log(satislar);
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js) Kullanarak:**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -73,20 +75,20 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL) Kullanarak:**
 
 ```bash
-curl http://localhost:1337/purchase?sort=createdAt%20DESC
+curl http://localhost:1337/satis?sort=createdAt%20DESC
 ```
 
-### Notes
+### Notlar
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains a `Purchase` model and an empty `PurchaseController`.  You can quickly achieve this by running:
+> + Yukarıdaki örnek "rest" blueprints'in etkin olduğunu varsayar, ve senin projende bir `Satis` modeli, boş bir `SatisController` olduğunu varsayar.  Bu şekilde hızlıca oluşturabilirsin::
 >
 >   ```bash
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
+>   $ sails generate api satis
 >   ```
 
 <docmeta name="uniqueID" value="Find290807">
