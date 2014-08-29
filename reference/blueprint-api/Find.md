@@ -83,7 +83,7 @@ curl http://localhost:1337/satis?sort=createdAt%20DESC
 
 ### Notlar
 
-> + Yukarıdaki örnek "rest" blueprints'in etkin olduğunu varsayar, ve senin projende bir `Satis` modeli, boş bir `SatisController` olduğunu varsayar.  Bu şekilde hızlıca oluşturabilirsin::
+> + Yukarıdaki örnek "rest" blueprints'in etkin olduğunu, projende bir `Satis` modeli ve boş bir `SatisController` olduğunu varsayar.  Bu şekilde hızlıca oluşturabilirsin::
 >
 >   ```bash
 >   $ sails new foo
