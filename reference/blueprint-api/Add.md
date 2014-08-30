@@ -73,7 +73,7 @@ curl http://localhost:1337/isci/7/yapilanSatislar/47 -X "POST"
 ### Notlar
 
 > + Bu eylem _çoğul_ ("koleksiyon") ilişki ile ilgilidir.  _tekil_ ("model") ilişkisi kurmak istiyorsan, [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html)'i kullanabilirsin.
-> + Yukarıdaki örnek "rest" blueprints'in açık olduğunu ve senin projende en az bir 'Isci' modelinin ilişkilenmiş olduğunu varsayar: `yapilanSatislar: {collection: 'Satis', via: 'kasiyer'}` aynı zamanda `Satis` modeli `kasiyer: {model: 'Isci'}` ile ilişkilidir.  Ve senin en az boş bir tane `SatisController` ve `IsciController` 'a ihtiyacın olacak.  Bu şekilde hızlıca oluşturabilirsin:
+> + Yukarıdaki örnek "rest" blueprints'in etkin olduğunu ve senin projende en az bir 'Isci' modelinin ilişkilenmiş olduğunu varsayar: `yapilanSatislar: {collection: 'Satis', via: 'kasiyer'}` aynı zamanda `Satis` modeli `kasiyer: {model: 'Isci'}` ile ilişkilidir.  Ve senin en az boş bir tane `SatisController` ve `IsciController` 'a ihtiyacın olacak.  Bu şekilde hızlıca oluşturabilirsin:
 >
 >   ```shell
 >   $ sails new foo
