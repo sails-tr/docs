@@ -1,23 +1,24 @@
-# Remove from Collection
+# Koleksiyondan Sil
 
-Removes an association between two records.
+İki kayıt arasındaki ilişkiyi(association) siler.
 
 ```
 DELETE /:model/:record/:association/:record_to_remove
 ```
 
-This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).
+Bu aksiyon bu kayıtın koleksiyon niteliğinden ("primary" (birincil) kayıt) diğer kayıta olan bir referansı ("foreign" (yabancı) kayıt) siler. 
+.
 
-+ If the foreign record does not exist, it is created first.
-+ If the collection doesn't contain a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ Yabancı (foreign) kayıt bulunmuyorsa, ilk olarak oluşturulur.
++ Eğer birincil (primary) kayıttaki kolleksiyon, yabancı (foreign) kayda referansı varsa bu eylem reddedilir.
++ Eğer ilişki 2-way (çift yollu) ise, (örn: dönüşümlü, her iki tarafta "via" ile) yabancı kayıttaki ilişki güncellenmiş olur.
 
 
-### Example
+### Örnek
 
-Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16.
+#16 nolu depoda (store) olan Dolly 'yi (isci #7) `employeesOfTheMonth` 'dan sil.
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/) Kullanarak:**
 
 ```javascript
 $.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
@@ -25,7 +26,7 @@ $.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/) Kullanarak:**
 
 ```javascript
 $http.delete('/store/16/employeesOfTheMonth/7')
@@ -34,7 +35,7 @@ $http.delete('/store/16/employeesOfTheMonth/7')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js) Kullanarak:**
 
 ```javascript
 io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
@@ -42,7 +43,7 @@ io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL) Kullanarak:**
 
 ```bash
 curl http://localhost:1337/store/16/employeesOfTheMonth/7 -X "DELETE"
@@ -63,10 +64,10 @@ Should return store #16, the primary record:
 
 
 
-### Notes
+### Notlar
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + Bu eylem _çoğul_ ("koleksiyon") ilişki ile ilgilidir.  _tekil_ ("model") ilişkisi kurmak istiyorsan, [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html)'i kullanabilirsin.
+> + Yukarıdaki örnek "rest" blueprints'in etkin olduğunu ve senin projende en az bir 'Employee' bunun yanısıra `Store` modelinin `employeesOfTheMonth: {collection: 'Employee'}` ilişkisi ile ilişkilendiğini varsayar.  Ayrıca en az bir boş `PurchaseController` ve  `EmployeeController` 'a ihtiyacınız olacak.  Bu şekilde hızlıca oluşturabilirsin:
 >
 >   ```shell
 >   $ sails new foo
@@ -75,7 +76,7 @@ Should return store #16, the primary record:
 >   $ sails generate api employee
 >   ```
 >
-> ...then editing `api/models/Store.js`.
+> ...sonra `api/models/Store.js` 'i düzelterek.
 
 <docmeta name="uniqueID" value="Remove2294521">
 <docmeta name="displayName" value="remove from">
