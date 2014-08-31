@@ -1,4 +1,4 @@
-# Kayıtları Bul (Find)
+# Kayıtları Bulma (Find)
 
 JSON obje dizisi ile, modelden kayıtların bir listesini döndürür/getirir.
 
