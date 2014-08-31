@@ -1,38 +1,38 @@
-# Update a Record
+# Kaydı Güncelleştirme
 
 ### `PUT /:model/:record`
 
-Update an existing record.
-Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
+Varolan bir kaydı güncellemek için: Değiştirilmek istenen nitelikler, HTTP body içinde form-encoded değerleriyle veya JSON formatında gönderilmiş olmalıdır. 
 
-### Description
-Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+### Açıklama
+**id** parametresi ile eşleşen model örneğini günceller. Güncellenen kaydın bir örneği JSON object şeklinde gösterir.
+Doğrulama hatası meydana gelirse, geçersiz nitelikler ile bir JSON tepkisi ve bir 400 durum kodu fırlatacaktır.  **id** ile eşleşen model örneği yoksa, bir `404` döner.
 
-### Parameters
+### Parametreler
 
- Parameter                          | Type                                                    | Details
+ Parametre                          | Tip                                                    | Ayrıntılar
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | The primary key value of the record to update.<br/><br/>e.g. `PUT /product/5`
- *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For `GET` (shortcut) requests, add the parameters to the query string.
- callback                           | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(gerekli)*                 | ((number))<br/>*-veya-*<br/>((string))                  | Güncellemek için kaydın birincil anahtarı (primary key).<br/><br/>örn: `PUT /product/5`
+ *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | POST (RESTful) isteğinde: İstenilen kayıt üzerindeki bu değerleri ayarlamak için, body parametrelerini modelinde tanımlanmış olan nitelik ismiyle aynı isimde gönder. `GET` (shortcut) istekleri için, parametreleri query string ile ekle.
+ callback                           | ((string))                                              | Eğer özellikle, JSONP isteği belirtilmişse (JSON'un yerine) gönderilecektir. Bu client-side javascript fonksiyonunu çağırmak için kullanılan isimle aynıdır. Sonuçları geçirme: ilk (ve tek) argüman alıyor gibi<br/> <br/> örn: `?callback=myJSONPHandlerFn`
 
-### Examples
+### Örnekler
 
-### Update Record (REST)
+### Kaydı Güncelle (REST)
 
-Change AppleJack's hobby to "kickin".
+AppleJack'in hobisini "kickin" ile değiştir.
 
 #### Route
 `PUT /pony/47`
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "hobby": "kickin"
 }
 ```
 
-### Expected Response
+### Beklenen Cevap
 ```json
 {
   "name": "AppleJack",
@@ -43,29 +43,30 @@ Change AppleJack's hobby to "kickin".
 }
 ```
 
-### Update Record (Shortcuts)
+### Kısayolu Güncelle (Shortcuts) 
 
 `GET /pony/update/47?hobby=kickin`
 
-#### Expected Response
+#### Beklenen Cevap
 
-Same as above.
+Yuardakiyle aynı.
 
-### Add association between two existing records (REST)
+### Varolan iki kayıt arasına ilişki ekle (REST)
 
+Pinkie Pie'e, önceden mevcut pet adı "Bubbles", ID'si 15 olan kaydı ver.
 Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 
 #### Route
 `POST /pony/4/pets`
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "id": 15
 }
 ```
 
-#### Expected Response
+#### Beklenen Cevap
 ```json
 {
   "name": "Pinkie Pie",
@@ -89,24 +90,24 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 }
 ```
 
-### Add association between two existing records (Shortcuts)
+### Varolan iki kayıt arasına ilişki kısayolu ekle (Shortcuts)
 `GET /pony/4/pets/add/15`
 
-### Remove Association (Many-To-Many) (REST)
+### İlişkiyi sil (Many-To-Many) (REST)
 
-Remove Pinkie Pie's pet, "Gummy" (ID 12)
+Pinkie Pie'nin pet'ini sil, "Gummy" (ID 12)
 
 #### Route
 `DELETE /pony/4/pets`
 
-#### JSON Request Body
+#### Gönderilecek olan JSON (JSON Request Body)
 ```json
 {
   "id": 12
 }
 ```
 
-#### Expected Response
+#### Beklenen Cevap
 ```json
 
 {
@@ -126,15 +127,15 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 ```
 
-#### Remove Association (Many-To-Many) (Shortcuts)
+#### İlişkiyi sil (Many-To-Many) (Shortcuts)
 
 #### Route
 
 `GET /pony/4/pets/remove/12`
 
-#### Expected Response
+#### Beklenen Cevap
 
-Same as above.
+Yukardaki ile aynı.
 
 <docmeta name="uniqueID" value="UpdateARecord421031">
 <docmeta name="displayName" value="update">
