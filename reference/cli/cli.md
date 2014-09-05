@@ -1,7 +1,7 @@
-# Command Line Interface (CLI)
+# Komut Satırı Arayüzü - Command Line Interface (CLI)
 
-### Overview
-Sails comes with a convenient command line tool to quickly get your app scaffolded and running.
+### Genel Bakış
+Sails çabucak uygulama iskelesini kurmak ve çalıştırmak için, uygun olan komut satırı aracı ile gelir.
 
 
 
